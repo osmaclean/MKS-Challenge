@@ -1,8 +1,9 @@
 import React from 'react'
 import { HeaderContainer } from './style'
 import Image from 'next/image'
+import { OpenAndCloseCartProps } from '@/@types'
 
-export const Header = () => {
+export const Header = ({ handleOpenAndCloseCart }: OpenAndCloseCartProps) => {
   return (
     <HeaderContainer>
       <Image
@@ -14,7 +15,7 @@ export const Header = () => {
       ></Image>
       <nav>
         <ul>
-          <li>
+          <li onClick={handleOpenAndCloseCart}>
             <Image
               alt="Image of a shopping cart"
               src="/cart.png"
