@@ -96,4 +96,24 @@ export const MainContentContainer = styled.main`
       }
     }
   }
+
+  @media (min-width: 1275px) {
+    min-height: 100vh;
+    .productContainer {
+      width: 80%;
+      align-items: flex-start;
+    }
+  }
+
+  @media (min-width: 1565px) {
+    .productContainer {
+      width: 65%;
+    }
+  }
+
+  @media (min-width: 1895px) {
+    .productContainer {
+      width: 52%;
+    }
+  }
 `

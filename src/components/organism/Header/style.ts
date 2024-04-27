@@ -28,4 +28,23 @@ export const HeaderContainer = styled.header`
       }
     }
   }
+
+  @media (max-width: 425px) {
+    padding: 0px 24px;
+
+    img {
+      height: 24px;
+      width: 120px;
+    }
+
+    ul {
+      li {
+        padding: 4px;
+        img {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
 `

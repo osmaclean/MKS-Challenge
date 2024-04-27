@@ -6,8 +6,13 @@ import Image from 'next/image'
 import { CartContext } from '@/context/cart-context'
 
 export const Cart = ({ handleOpenAndCloseCart }: OpenAndCloseCartProps) => {
-  const { products, increaseQuantity, decreaseQuantity, totalAmountToPay } =
-    useContext(CartContext)
+  const {
+    products,
+    increaseQuantity,
+    decreaseQuantity,
+    totalAmountToPay,
+    removeProductFromCart,
+  } = useContext(CartContext)
 
   const handleIncreaseQuantity = (id: number) => {
     const filteredProduct = products.find((product) => product.id === id)
@@ -72,7 +77,12 @@ export const Cart = ({ handleOpenAndCloseCart }: OpenAndCloseCartProps) => {
                   currency: 'BRL',
                 }).format(parseInt(product.price))}
               </p>
-              <button className="cartCard__removeButton">X</button>
+              <button
+                onClick={() => removeProductFromCart(product.id)}
+                className="cartCard__removeButton"
+              >
+                X
+              </button>
             </div>
           ))}
         </section>

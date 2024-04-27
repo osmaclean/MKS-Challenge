@@ -90,10 +90,6 @@ export const CartContainer = styled.section`
           font-size: 14px;
           width: 80px;
         }
-
-        p {
-          /* font-weight: 700; */
-        }
       }
     }
   }
@@ -114,7 +110,6 @@ export const CartContainer = styled.section`
   }
 
   .footerButton:hover {
-    /* opacity: 0.7; */
     transform: scale(0.9);
   }
 
@@ -199,5 +194,120 @@ export const CartContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media (max-width: 445px) {
+    width: 15rem;
+
+    .insideCartContainer {
+      padding: 24px;
+    }
+
+    .insideCartContainer__CartBoxHeader {
+      .insideCartContainer__CartBoxHeader--title {
+        font-size: 20px;
+      }
+
+      .insideCartContainer__CartBoxHeader--button {
+        width: 32px !important;
+        padding: 0px !important;
+        height: 24px !important;
+        font-size: 12px !important;
+      }
+    }
+
+    .totalAmount {
+      h2 {
+        font-size: 16px;
+      }
+    }
+
+    .footerButton {
+      font-size: 16px;
+      height: 60px;
+    }
+
+    .insideCartContainer__CartBoxFooter {
+      align-items: center !important;
+      .insideCartContainer__CartBoxFooter--cartCard {
+        width: 100% !important;
+        padding: 24px 8px 8px 8px !important;
+        grid-template-columns: repeat(1, 1fr) !important;
+        gap: 8px;
+
+        img {
+          width: 104px !important;
+        }
+
+        h3 {
+          width: 100% !important;
+          text-align: center;
+        }
+      }
+    }
+
+    .quantityBox {
+      .quantityBox__title {
+        display: none;
+      }
+
+      .quantityBox__quantityControlBox {
+        width: 40%;
+
+        button {
+          background-color: transparent;
+          border: none;
+          height: 12px;
+          width: 12px;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: 300ms ease-in-out;
+        }
+
+        span {
+          font-size: 13px;
+        }
+
+        .quantityBox__quantityControlBox--divisor {
+          background-color: ${(props) => props.theme.borderQuantity};
+          width: 1px;
+          height: 14px;
+        }
+      }
+    }
+
+    .cartCard__price {
+      background-color: ${(props) => props.theme['black-600']};
+      color: ${(props) => props.theme.white};
+      font-weight: 700;
+      font-size: 14px;
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      border-radius: 4px;
+      padding: 4px;
+    }
+
+    .cartCard__removeButton {
+      background-color: ${(props) => props.theme.white};
+      border: 2px solid ${(props) => props.theme.white};
+      padding: 0px;
+      width: 20px;
+      height: 20px;
+      color: ${(props) => props.theme['black-700']};
+      font-size: 24px;
+      font-weight: 500;
+      transition: 300ms ease-in-out;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
   }
 `
