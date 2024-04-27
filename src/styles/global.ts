@@ -7,15 +7,23 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  :focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px ${(props) => props.theme['black-600']};
-  }
-
   body {
     color: ${(props) => props.theme['black-600']};
     background-color: ${(props) => props.theme.white};
     -webkit-font-smoothing: antialiased;
+    position: relative;
+    user-select: none;
+  }
+
+  body::-webkit-scrollbar {
+    background-color: ${(props) => props.theme['white-200']};
+    color: ${(props) => props.theme['blue-200']};
+    padding: 2px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['blue-200']};
+    border-radius: 8px;
   }
 
   body, input, textarea, button {
