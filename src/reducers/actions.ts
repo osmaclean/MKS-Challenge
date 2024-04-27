@@ -3,7 +3,8 @@ import { Product } from './reducer'
 export enum ActionTypes {
   ADD_PRODUCT = 'ADD_PRODUCT',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
-  UPDATE_QUANTITY = 'UPDATE_QUANTITY',
+  INCREASE_QUANTITY = 'INCREASE_QUANTITY',
+  DECREASE_QUANTITY = 'DECREASE_QUANTITY',
 }
 
 export function addProduct(product: Product) {
@@ -20,9 +21,16 @@ export function removeProduct(productId: number) {
   }
 }
 
-export function updateProductQuantity(productId: number) {
+export function increaseProductQuantity(productId: number) {
   return {
-    type: ActionTypes.UPDATE_QUANTITY,
+    type: ActionTypes.INCREASE_QUANTITY,
+    payload: productId,
+  }
+}
+
+export function decreaseProductQuantity(productId: number) {
+  return {
+    type: ActionTypes.DECREASE_QUANTITY,
     payload: productId,
   }
 }

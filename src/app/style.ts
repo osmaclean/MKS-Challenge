@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const MainContentContainer = styled.main`
   width: 100%;
-  padding: 72px 64px;
+  padding: 40px 64px 72px 64px;
   display: flex;
   align-items: center;
   justify-content: center;

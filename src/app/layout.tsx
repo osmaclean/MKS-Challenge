@@ -1,4 +1,5 @@
 'use client'
+import { CartProvider } from '@/context/cart-context'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Montserrat } from 'next/font/google'
 
@@ -18,9 +19,11 @@ export default function RootLayout({
       <head>
         <title>MKS Sistemas</title>
       </head>
-      <QueryClientProvider client={queryClient}>
-        <body className={montserrat.className}>{children}</body>
-      </QueryClientProvider>
+      <CartProvider>
+        <QueryClientProvider client={queryClient}>
+          <body className={montserrat.className}>{children}</body>
+        </QueryClientProvider>
+      </CartProvider>
     </html>
   )
 }

@@ -29,12 +29,28 @@ export function productReducer(state: ProductState, action: any) {
         ],
       }
 
-    case ActionTypes.UPDATE_QUANTITY:
+    case ActionTypes.INCREASE_QUANTITY:
       return {
         ...state,
         products: state.products.map((product) =>
           product.id === action.payload
-            ? { ...product, quantity: product.quantity + 1 }
+            ? {
+                ...product,
+                quantity: product.quantity + 1,
+              }
+            : product,
+        ),
+      }
+
+    case ActionTypes.DECREASE_QUANTITY:
+      return {
+        ...state,
+        products: state.products.map((product) =>
+          product.id === action.payload
+            ? {
+                ...product,
+                quantity: product.quantity === 0 ? 0 : product.quantity - 1,
+              }
             : product,
         ),
       }

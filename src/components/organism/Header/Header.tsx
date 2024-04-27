@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HeaderContainer } from './style'
 import Image from 'next/image'
 import { OpenAndCloseCartProps } from '@/@types'
+import { CartContext } from '@/context/cart-context'
 
 export const Header = ({ handleOpenAndCloseCart }: OpenAndCloseCartProps) => {
+  const { totalItems } = useContext(CartContext)
   return (
     <HeaderContainer>
       <Image
@@ -23,7 +25,7 @@ export const Header = ({ handleOpenAndCloseCart }: OpenAndCloseCartProps) => {
               height={18}
               width={19}
             />
-            0
+            {totalItems > 0 ? totalItems : 0}
           </li>
         </ul>
       </nav>

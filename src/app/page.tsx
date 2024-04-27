@@ -7,13 +7,15 @@ import { GlobalStyle } from '@/styles/global'
 import { defaultTheme } from '@/styles/themes/default'
 import { ThemeProvider } from 'styled-components'
 import { MainContentContainer } from './style'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { fetchProducts } from '@/api/productService'
 import { useQuery } from '@tanstack/react-query'
 import { Product } from '@/reducers/reducer'
+import { CartContext } from '@/context/cart-context'
 
 export default function Home() {
-  const [isCartOpen, setIsCartOpen] = useState<boolean>(true)
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
+  const { addProductToCart } = useContext(CartContext)
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ['products'],
@@ -32,11 +34,11 @@ export default function Home() {
       <Header handleOpenAndCloseCart={handleOpenAndCloseCart} />
       <MainContentContainer>
         <section className="productContainer">
-          {data.products?.map((post: Product) => (
-            <section key={post.name} className="productContainer__boxCard">
+          {data.products?.map((product: Product) => (
+            <section key={product.name} className="productContainer__boxCard">
               <Image
                 alt=""
-                src={post.photo || '/logo.png'}
+                src={product.photo || '/logo.png'}
                 aria-label=""
                 width={111}
                 height={138}
@@ -44,17 +46,20 @@ export default function Home() {
               <div className="productInfoContainer">
                 <section className="productInfoContainer__boxInfo">
                   <h1 className="productInfoContainer__boxInfo--productTitle">
-                    {post.name}
+                    {product.name}
                   </h1>
                   <p className="productInfoContainer__boxInfo--productPrice">
-                    R${parseInt(post.price)}
+                    R${parseInt(product.price)}
                   </p>
                 </section>
                 <span className="productInfoContainer__descriptionInfo">
-                  {post.description}
+                  {product.description}
                 </span>
               </div>
-              <button className="productContainer__boxCard--addToCartButton">
+              <button
+                onClick={() => addProductToCart({ ...product, quantity: 1 })}
+                className="productContainer__boxCard--addToCartButton"
+              >
                 <Image
                   alt="Bag icon"
                   src="/buy.png"
@@ -69,7 +74,7 @@ export default function Home() {
           ))}
         </section>
       </MainContentContainer>
-      <Cart handleOpenAndCloseCart={handleOpenAndCloseCart} />
+      {isCartOpen && <Cart handleOpenAndCloseCart={handleOpenAndCloseCart} />}
       <Footer />
       <GlobalStyle />
     </ThemeProvider>

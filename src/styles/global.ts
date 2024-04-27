@@ -12,6 +12,18 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.white};
     -webkit-font-smoothing: antialiased;
     position: relative;
+    user-select: none;
+  }
+
+  body::-webkit-scrollbar {
+    background-color: ${(props) => props.theme['white-200']};
+    color: ${(props) => props.theme['blue-200']};
+    padding: 2px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['blue-200']};
+    border-radius: 8px;
   }
 
   body, input, textarea, button {
